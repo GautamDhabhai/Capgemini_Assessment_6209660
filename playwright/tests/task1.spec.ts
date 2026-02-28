@@ -10,4 +10,5 @@ test("amazon fetching", async({page}) => {
     console.log(`The name is: ${await name.textContent()}`);
     let price = page.locator('//span[@class="a-price-whole"]').nth(1);
     console.log(`The price is: ${await price.textContent()}`);
+    page.screenshot();
 })
