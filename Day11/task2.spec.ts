@@ -12,4 +12,5 @@ test("flipkart fetching", async({page}) => {
     await appleChckbox.click();
     let price = page.locator('//div[@class="QSCKDh dLgFEE"]//div[@class="lvJbLV col-12-12"][3]//div[@class="hZ3P6w DeU9vF"]');
     console.log(await price.textContent());
+    await page.screenshot({path: "./screenshot/task2.png"})
 });
