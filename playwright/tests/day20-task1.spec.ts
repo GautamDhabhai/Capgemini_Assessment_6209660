@@ -4,7 +4,7 @@ import path from 'path'
 
 
 
-test("amazon task 23", async ({ page }) => {
+test("day20 task1", async ({ page }) => {
     const data = fs.readFileSync(path.join(__dirname, '../testdata/day20-task1.json'), "utf-8");
     const jsonData = JSON.parse(data);
     await page.goto("https://www.amazon.in/");

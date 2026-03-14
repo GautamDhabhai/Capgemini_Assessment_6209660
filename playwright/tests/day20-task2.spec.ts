@@ -2,7 +2,7 @@ import {test, expect} from '@playwright/test'
 import path from 'path'
 import fs from 'fs'
 
-test("day19 task 1", async({page})=>{
+test("day20 task 2", async({page})=>{
     const data = fs.readFileSync(path.join(__dirname, '../testdata/day20-task2.json'), "utf-8");
     const jsonData = JSON.parse(data);
     for(let i = 0; i < jsonData.length; i++){

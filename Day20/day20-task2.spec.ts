@@ -2,20 +2,20 @@ import { test, expect } from "../playwright/node_modules/@playwright/test";
 import path from 'path'
 import fs from 'fs'
 
-test("day19 task 1", async({page})=>{
-    const data = fs.readFileSync(path.join(__dirname, '../testdata/day20-task2.json'), "utf-8");
+test("day20 task2", async ({ page }) => {
+    const data = fs.readFileSync(path.join(__dirname, '../playwright/testdata/day20-task2.json'), "utf-8");
     const jsonData = JSON.parse(data);
-    for(let i = 0; i < jsonData.length; i++){
+    for (let i = 0; i < jsonData.length; i++) {
         await page.goto('https://demoqa.com/automation-practice-form');
         await page.locator('#firstName').fill(jsonData[i].firstName);
         await page.locator('#lastName').fill(jsonData[i].lastName);
         await page.locator('#userEmail').fill(jsonData[i].email);
 
-        if(jsonData[i].gender == 'Male'){
+        if (jsonData[i].gender == 'Male') {
             await page.locator('#gender-radio-1').click();
-        }else if(jsonData[i].gender == 'Female'){
+        } else if (jsonData[i].gender == 'Female') {
             await page.locator('#gender-radio-2').click();
-        }else{
+        } else {
             await page.locator('#gender-radio-3').click();
         }
 
@@ -28,19 +28,19 @@ test("day19 task 1", async({page})=>{
 
         await page.locator('#subjectsInput').fill(jsonData[i].subject);
         await page.keyboard.press('Enter');
-        
-        if(jsonData[i].hobby == 'Sports'){
+
+        if (jsonData[i].hobby == 'Sports') {
             await page.locator('#hobbies-checkbox-1').click();
-        }else if(jsonData[i].hobby == 'Reading'){
+        } else if (jsonData[i].hobby == 'Reading') {
             await page.locator('#hobbies-checkbox-2').click();
-        }else if(jsonData[i].hobby == 'Music'){
+        } else if (jsonData[i].hobby == 'Music') {
             await page.locator('#hobbies-checkbox-3').click();
         }
 
         await page.locator('#uploadPicture').setInputFiles(path.join(__dirname, jsonData[i].image));
 
         await page.locator('#currentAddress').fill(jsonData[i].address);
-    
+
         await page.locator('#react-select-3-input').fill(jsonData[i].state);
         await page.keyboard.press('Enter');
         await page.locator('#react-select-4-input').fill(jsonData[i].city);
@@ -50,9 +50,9 @@ test("day19 task 1", async({page})=>{
         await page.waitForTimeout(2000);
         await page.locator('#submit').click();
         await page.waitForTimeout(1000);
-        
-        
+
+
     }
-    await page.screenshot({path: `screenshots/day20-task2.png`});
-    
+    await page.screenshot({ path: `screenshots/day20-task2.png` });
+
 })
